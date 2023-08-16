@@ -1,5 +1,8 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace PetDeskDataModels {
     public class Pet {
+        [Key]
         public int AnimalId { get; set; }
         
         public string? FirstName { get; set; }

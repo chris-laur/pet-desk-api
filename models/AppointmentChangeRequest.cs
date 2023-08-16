@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace PetDeskDataModels {
 
     public class AppointmentChangeRequest {
@@ -6,13 +8,14 @@ namespace PetDeskDataModels {
             User = new User();
             Animal = new Pet();
         }
-
+        [Key]
         public int AppointmentId { get; set; }
         
-        // ideally Appointment Type would be stored in the DB and this property would be an object 
+        // ideally Appointment Type and Status would be stored in the DB and would be an object 
         // with an Id and Description 
         public string? AppointmentType { get; set; }
-        
+        public string? Status { get; set; }
+
         public DateTime CreateDateTime { get; set; }
         
         public DateTime RequestedDateTimeOffset { get; set; }
