@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace PetDeskDataModels {
-    public class Pet {
+    public class Animal {
         [Key]
         public int AnimalId { get; set; }
         

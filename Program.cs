@@ -36,6 +36,7 @@ static async Task<IResult> GetAppointmentChangeRequests(PetDeskDb db)
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     appointmentChangeRequests = JsonSerializer.Deserialize<List<AppointmentChangeRequest>>(apiResponse, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
                     db.AppointmentChangeRequests.AddRange(appointmentChangeRequests);
                     db.SaveChanges();
                 }
@@ -47,7 +48,7 @@ static async Task<IResult> GetAppointmentChangeRequests(PetDeskDb db)
 
     }
 
-    return TypedResults.Ok(await db.AppointmentChangeRequests.ToArrayAsync());
+    return TypedResults.Ok(await db.AppointmentChangeRequests.Include(x => x.Animal).Include(x => x.User).ToArrayAsync());
 }
 
 static async Task<IResult> UpdateAppointmentChangeRequest(int id, AppointmentChangeRequest updatedAppointmentChangeRequest, PetDeskDb db)

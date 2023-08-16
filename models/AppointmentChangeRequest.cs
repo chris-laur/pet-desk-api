@@ -1,12 +1,13 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace PetDeskDataModels {
+namespace PetDeskDataModels
+{
 
     public class AppointmentChangeRequest {
 
         public AppointmentChangeRequest() {
             User = new User();
-            Animal = new Pet();
+            Animal = new Animal();
         }
         [Key]
         public int AppointmentId { get; set; }
@@ -19,10 +20,10 @@ namespace PetDeskDataModels {
         public DateTime CreateDateTime { get; set; }
         
         public DateTime RequestedDateTimeOffset { get; set; }
-        
+        public int UserId { get; set; }
         public User User { get; set; }
-        
-        public Pet Animal { get; set; }
+        public int AnimalId { get; set; }
+        public Animal Animal { get; set; }
     }
 
 }
