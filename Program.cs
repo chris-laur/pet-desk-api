@@ -11,7 +11,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: "PetDeskClientApp",
                       policy  =>
                       {
-                          policy.WithOrigins("https://chris-laur.github.io", "http://localhost:5173");
+                          policy.WithOrigins("https://chris-laur.github.io", "http://localhost:5173").AllowAnyHeader().AllowAnyMethod();
                       });
 });
 
